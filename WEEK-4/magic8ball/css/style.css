@@ -92,7 +92,7 @@ h1 {
 #answerContainer {
     text-align: center;
     background-color: bisque;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 p {
