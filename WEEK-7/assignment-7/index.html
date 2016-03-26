@@ -26,8 +26,32 @@
             </li>
         </ul>
 
+<div id="wrapper">
         <h1> Assignment 7</h1>
-        <h2> not done yet</h2>
+        <h2>Random Password Generator</h2>
+        <h2>Put your username and click on Generate <br> to create your password</h2>
+        <br>
+
+        <form id="myform">
+
+            <input type="hidden" name="length" value="10">
+
+            <h3>Username:</h3>
+
+
+            <input id="update_username" type="text" placeholder="Input username"> </input>
+
+            <h3>Password:<h3>
+
+                    <input id="row_password" type="text"> </input>
+
+
+                    <input type="button" class="button" value="Generate" onClick="generate();" tabindex="2">
+
+        </form>
+
+</div>
+
 
 
         <script src="js/main.js"></script>
