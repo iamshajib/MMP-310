@@ -1,4 +1,4 @@
-<<<<<<< 453c9e5b9caabf44e1da78c8152d2f32bf98f60a
+
 
 body{
     font-family: Helvetica, Arial, sans-serif;
@@ -46,54 +46,3 @@ ul li ul{
 ul li:hover ul{
     display: inline-block;
 }
-
-
-=======
-
-body{
-    font-family: Helvetica, Arial, sans-serif;
-    background: #b09e82;
-    margin: 0;
-    line-height: 1.45;
-}
-#container{
-    max-width: 760px;
-    margin: 0 auto;
-}
-
-
-ul{
-    color:white;
-    float: right;
-}
-
-a{
-    color:black;
-    text-decoration: none;
-}
-a:hover{
-    color:green;
-}
-
-ul{
-    list-style: none;
-    padding: 0;
-    color: black;
-}
-
-ul li{
-    display: inline-block;
-    margin-right: 1em;
-    position: relative;
-}
-
-ul li ul{
-    display: none;
-    position: absolute;
-    left: 0;
-}
-
-ul li:hover ul{
-    display: inline-block;
-}
->>>>>>> Added files via upload
