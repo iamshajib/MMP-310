@@ -6,7 +6,7 @@ var qa = [
     ["Where is the biggest museum located?", "London"]
 ]
 
-<<<<<<< HEAD
+
 function getAnswer() {
     score = 0;
     totalQuestions = 5;
@@ -14,5 +14,4 @@ function getAnswer() {
 
 document.getElementById("score").innerHTML = "<h3>Score: " + score + "</h3>";
 }
-=======
->>>>>>> origin/gh-pages
+
