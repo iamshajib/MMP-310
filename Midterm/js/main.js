@@ -8,8 +8,8 @@ var qa = [
 
 function getAnswer() {
     score = 0;
-    questions = 5;
-    correct = 5;
-    answers = 5;
+    totalQuestions = 5;
+    totalAnswers = 5;
 
+document.getElementById("score").innerHTML = "<h3>Score: " + score + "</h3>";
 }
