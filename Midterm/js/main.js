@@ -6,10 +6,3 @@ var qa = [
     ["Where is the biggest museum located?", "London"]
 ]
 
-function getAnswer() {
-    score = 0;
-    questions = 5;
-    correct = 5;
-    answers = 5;
-
-}
