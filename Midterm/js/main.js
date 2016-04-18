@@ -1,17 +1,13 @@
-var qa = [
-    ["How many days in a leep year?", "366" ],
-    ["The world smallest country is?", "Vatican City" ],
-    ["The brighest planet is?", "Venus"],
-    ["Country that was called as Land of Rising Sun?", "Japan"],
-    ["Where is the biggest museum located?", "London"]
-]
+function getAnswers() {
+    var total = 5;
+    var score = 0;
 
+    var q1 = document.forms["quizForm"]["q1"].value;
+    var q2 = document.forms["quizForm"]["q2"].value;
+    var q3 = document.forms["quizForm"]["q3"].value;
+    var q4 = document.forms["quizForm"]["q4"].value;
+    var q5 = document.forms["quizForm"]["q5"].value;
 
-function getAnswer() {
-    score = 0;
-    totalQuestions = 5;
-    totalAnswers = 5;
+    var answers = ["366", "Vatican City", "Vatican City", "Japan", "DC"];
 
-document.getElementById("score").innerHTML = "<h3>Score: " + score + "</h3>";
 }
-

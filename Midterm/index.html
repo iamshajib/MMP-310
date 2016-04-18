@@ -27,69 +27,68 @@
 
         <h1>JavaScript Quiz Show</h1>
 
-        <form>
-            <h3>How many days in a leep year?</h3>
-            <input type="radio" name="answer" value="Jan">365
+        <form name="question" onsubmit="getAnswers()">
+            <h3> How many days in a leep year?</h3>
             <br/>
-            <input type="radio" name="answer" value="Dec">364
+            <input type="radio" name="q1" value="365">365
             <br/>
-            <input type="radio" name="answer" value="Feb">366
+            <input type="radio" name="q1" value="364">364
             <br/>
-            <input type="radio" name="answer" value="June">363
+            <input type="radio" name="q1" value="366">366
             <br/>
-        </form>
+            <input type="radio" name="q1" value="363">363
+            <br/>
 
-        <form>
             <h3>The world smallest country is?</h3>
-            <input type="radio" name="answer" value="Jan"> Canada
             <br/>
-            <input type="radio" name="answer" value="Dec">Russia
+            <input type="radio" name="q2" value="Canada">Canada
             <br/>
-            <input type="radio" name="answer" value="Feb">Maldives
+            <input type="radio" name="q2" value="Russia">Russia
             <br/>
-            <input type="radio" name="answer" value="June">Vatican City
+            <input type="radio" name="q2" value="Maldives">Maldives
             <br/>
-        </form>
+            <input type="radio" name="q2" value="Vatican City">Vatican City
+            <br/>
 
-        <form>
             <h3>The brighest planet is?</h3>
-            <input type="radio" name="answer" value="Jan"> Mars
             <br/>
-            <input type="radio" name="answer" value="Dec">Venus
+            <input type="radio" name="q3" value="Mars">Mars
             <br/>
-            <input type="radio" name="answer" value="Feb">Neptune
+            <input type="radio" name="q3" value="Venus">Vatican City
             <br/>
-            <input type="radio" name="answer" value="June">Mercury
+            <input type="radio" name="q3" value="Neptune">Neptune
             <br/>
+            <input type="radio" name="q3" value="Mercury">Mercury
+            <br/>
+
+            <h3> Country that was called as Land of Rising Sun?</h3>
+            <br/>
+            <input type="radio" name="q4" value="Japan">Japan
+            <br/>
+            <input type="radio" name="q4" value="India">India
+            <br/>
+            <input type="radio" name="q4" value="Bangladesh">Bangladesh
+            <br/>
+            <input type="radio" name="q4" value="Holland">Holland
+            <br/>
+
+            <h3> Capital of USA?</h3>
+            <br/>
+            <input type="radio" name="q5" value="NY">NY
+            <br/>
+            <input type="radio" name="q5" value="DC">DC
+            <br/>
+            <input type="radio" name="q5" value="PA">PA
+            <br/>
+            <input type="radio" name="q5" value="CA">CA
+            <br/>
+
         </form>
 
-        <form>
-            <h3>Country that was called as Land of Rising Sun?</h3>
-            <input type="radio" name="answer" value="Jan"> Japan
-            <br/>
-            <input type="radio" name="answer" value="Dec">India
-            <br/>
-            <input type="radio" name="answer" value="Feb">Bangladesh
-            <br/>
-            <input type="radio" name="answer" value="June">Holland
-            <br/>
-        </form>
 
-        <form>
-            <h3>Where is the biggest museum located?</h3>
-            <input type="radio" name="answer" value="Jan"> New York
-            <br/>
-            <input type="radio" name="answer" value="Dec">London
-            <br/>
-            <input type="radio" name="answer" value="Feb">Delhi
-            <br/>
-            <input type="radio" name="answer" value="June">Thailand
-            <br/>
-        </form>
-
-        <input type="submit" id="submit"  onClick="getAnswer()">
+        <input type="submit" id="mysubmit">
         <br/>
-        <div id="score"></div><br/>
+        <div id="score"></div>
 
 
     </div>
