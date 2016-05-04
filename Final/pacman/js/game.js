@@ -39,9 +39,8 @@ function draw() {
 	}
 
 	if ( player.collide( obstacle ) ) {
-		player.position.x = 400;
-		player.position.y = 0;
-		player.velocity.x = 0;
+		player.remove();
+
 	}
 
 	drawSprites();
