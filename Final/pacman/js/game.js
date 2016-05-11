@@ -1,46 +1,99 @@
-var pacman, ghost;
+var pacman, ghost, frame;
 var pacman_walk_sprites, pacman_walk, pacman_stand_sprites, pacman_stand;
-var obstacle;
+var obstacles;
+var walls;
+var dots = [];
 
 function preload() {
+    dataLoaded = false;
+
     pacman_walk_sprites = loadSpriteSheet("image/pacman.png", 50, 50, 6);
     pacman_walk = loadAnimation(pacman_walk_sprites);
-    //    pacman_stand_sprites = loadSpriteSheet("image/pacman.png", 50, 50, 1);
-    //    pacman_stand = loadAnimation(pacman_stand_sprites);
-
 }
 
 function setup() {
-    createCanvas(900, 500);
+    createCanvas(1200, 676);
+
+    obstacles = new Group();
+
+    //load json
+    var url = "js/data/setup.json";
+    loadJSON(url, jsonLoaded);
+    console.log('setup complete');
 
 
-    pacman = createSprite(70, 40);
+    pacman = createSprite(370, 140);
     pacman.addAnimation("walk", pacman_walk);
-    //pacman.addAnimation("stand", pacman_stand);
     pacman.setCollider("circle", 0, 0, 32, 32);
     //player.debug = true;
 
 
-    obstacle = createSprite(300, 200);
-    obstacle.debug = true;
-    obstacle.addImage(loadImage("image/circle.png"));
-    obstacle.setCollider("circle", 0, 0, 18, 18);
+    /*frame = createSprite(600, 500);
+    frame.addImage(loadImage("image/frame.png"));
+    obstacles.add(frame);
+    frame.debug = true;*/
 
+    frame = loadImage("image/frame.png");
+
+    wall = createSprite(100,100,100, 40);
+    //wall.visible = false;
+    wall.setCollider("rectangle", 0, 0, 100, 40);
+    wall.debug = true;
+    obstacles.add(wall);
 
     ghost = createSprite(100, 100);
     ghost.addImage(loadImage("image/ghost.png"));
 }
+//end of setup
+
+function pacmanCollide() {
+    console.log('collide');
+}
+
 
 function draw() {
     background("black");
+    image(frame, 0, 0);
+
+    if (dataLoaded) {
+        pacman.collide(obstacles, pacmanCollide); //console.log('obstacles',obstacles);
+        obstacles.collide(pacman);
+    }
 
 
-    pacman.collide(obstacle, function() {
-        obstacle.remove();
-    });
+   dots.forEach( function(dot) {
+      pacman.overlap(dot, function() {
+          dot.remove();
+      });
+   });
 
     drawSprites();
 }
+//en of draw
+
+
+
+function jsonLoaded(jsonData) {
+    console.log('json loaded', jsonData);
+    data = jsonData;
+    showImages();
+}
+
+function showImages() {
+    console.log('showimages');
+
+    for (var i = 0; i < data.dotLocations.length; i++) {
+        var dot = createSprite(data.dotLocations[i][0], data.dotLocations[i][1]);
+        dot.addImage(loadImage("image/" + data.dotImage));
+        /*obstacles.add(dot);*/
+        dots.push(dot);
+
+    }
+    dataLoaded = true;
+}
+
+
+
 
 function keyPressed() {
     if (keyCode === LEFT_ARROW) {

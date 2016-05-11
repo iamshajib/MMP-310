@@ -1,0 +1,8 @@
+{
+    "dotImage": "circle.png",
+    "dotLocations":[
+        [180, 150],
+        [150, 30],
+        [290, 280]
+    ]
+}
