@@ -1,13 +1,16 @@
-var pacman, frame, line, line2, box, smbox, lose;
+var pacman, frame, line, line2, box, smbox, lose = false;
 var pacman_walk_sprites, pacman_walk, pacman_stand_sprites, pacman_stand;
 var obstacles;
 var walls;
 var ghosts;
-//var direction = 90;
+var dataLoaded = false;
 var dots = [];
+ var directions = [
+    90, 180, 270, 360
+ ];
 
 function preload() {
-    dataLoaded = false;
+
 
     pacman_walk_sprites = loadSpriteSheet("image/pacman.png", 30, 30, 6);
     pacman_walk = loadAnimation(pacman_walk_sprites);
@@ -24,7 +27,7 @@ function setup() {
     console.log('setup complete');
 
 
-    pacman = createSprite(170, 180);
+    pacman = createSprite(870, 180);
     pacman.addAnimation("walk", pacman_walk);
     pacman.setCollider("circle", 0, 0, 30, 30);
     //player.debug = true;
@@ -211,7 +214,7 @@ function setup() {
     wall = createSprite(1122, 578, 80, 85);
     wall.setCollider("rectangle", 0, 0, 80, 85);
     wall.visible = false;
-    //    wall.debug = true;
+    wall.debug = true;
     obstacles.add(wall);
 
 
@@ -320,11 +323,12 @@ function setup() {
     smbox = createSprite(1012, 222);
     smbox.addImage(loadImage("image/smbox.png"));
     obstacles.add(smbox);
+//    smbox.debug = true;
 
     smbox = createSprite(1012, 460);
     smbox.addImage(loadImage("image/smbox.png"));
+//    smbox.debug = true;
     obstacles.add(smbox);
-
 
 
     ghosts=[
@@ -332,11 +336,6 @@ function setup() {
         new ghost(250, 150, "image/ghost.png"),
         new ghost(350, 150, "image/ghost.png")
     ];
-
-
-
-//    ghost = createSprite(200, 100);
-//    ghost.addImage(loadImage("image/ghost.png"));
 }
 //end of setup
 
@@ -365,27 +364,21 @@ function draw() {
     }
 
 
+    if (!lose) {
+        for (var i = 0; i < ghosts.length; i++) {
+            ghosts[i].s.collide(obstacles, function () {
+                ghosts[i].s.setSpeed(ghosts[i].speed, directions[floor(random(0, directions.length))]);
+            });
 
-//    if (!lose) {
-//
-//
-//        for (var i = 0; i < ghosts.length; i++) {
-//            ghosts[i].s.collide(obstacles, function () {
-//                ghosts[i].s.setSpeed(ghosts[i].speed, directions[floor(random(0, directions.length))]);
-//            });
-//
-//            ghosts[i].s.collide(pacman, function () {
-//                lose = true;
-//            });
-//        }
-//
-//        pacman.overlap(collectibles, collect);
-//    } else {
-//
-//    }
+            ghosts[i].s.collide(pacman, function () {
+              lose = true;
+            });
+        }
 
-
-
+    } else {
+        fill("white");
+        text("you lost", 100, 100);
+    }
 
 
     dots.forEach(function (dot) {
@@ -424,15 +417,15 @@ function showImages() {
 
 function keyPressed() {
     if (keyCode === LEFT_ARROW) {
-        pacman.setSpeed(2, 180);
+        pacman.setSpeed(4, 180);
         pacman.mirrorX(-1);
     } else if (keyCode === RIGHT_ARROW) {
-        pacman.setSpeed(2, 0);
+        pacman.setSpeed(4, 0);
         pacman.mirrorX(1);
     } else if (keyCode === UP_ARROW) {
-        pacman.setSpeed(2, 270);
+        pacman.setSpeed(4, 270);
     } else if (keyCode === DOWN_ARROW) {
-        pacman.setSpeed(2, 90);
+        pacman.setSpeed(4, 90);
     }
 
 }
