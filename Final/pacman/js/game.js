@@ -29,8 +29,8 @@ function setup() {
 
     pacman = createSprite(870, 180);
     pacman.addAnimation("walk", pacman_walk);
-    pacman.setCollider("circle", 0, 0, 30, 30);
-    //player.debug = true;
+    pacman.setCollider("circle", 0, 0, 20, 20);
+    pacman.debug = true;
 
 
     frame = loadImage("image/frame.png");
@@ -332,9 +332,9 @@ function setup() {
 
 
     ghosts=[
-        new ghost(150, 150, "image/ghost.png"),
-        new ghost(250, 150, "image/ghost.png"),
-        new ghost(350, 150, "image/ghost.png")
+        new ghost(550, 350, "image/ghost.png"),
+        new ghost(550, 350, "image/ghost.png"),
+        new ghost(550, 350, "image/ghost.png")
     ];
 }
 //end of setup
@@ -371,7 +371,7 @@ function draw() {
             });
 
             ghosts[i].s.collide(pacman, function () {
-              lose = true;
+//              lose = true;
             });
         }
 
