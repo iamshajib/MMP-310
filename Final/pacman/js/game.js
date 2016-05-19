@@ -27,6 +27,8 @@ function setup() {
     console.log('setup complete');
 
 
+    alert("Welcome to the Pacman Game.");
+
     pacman = createSprite(870, 180);
     pacman.addAnimation("walk", pacman_walk);
     pacman.setCollider("circle", 0, 0, 20, 20);
@@ -371,13 +373,14 @@ function draw() {
             });
 
             ghosts[i].s.collide(pacman, function () {
-//              lose = true;
+              lose = true;
             });
         }
 
     } else {
-        fill("white");
-        text("you lost", 100, 100);
+        textSize(90);
+        text("Game Over", 400, 300);
+        fill(0, 102, 153);
     }
 
 
