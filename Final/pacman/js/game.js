@@ -26,13 +26,13 @@ function setup() {
     console.log('setup complete');
 
 
-    alert("Welcome to the Pacman Game.");
+//    alert("Welcome to the Pacman Game.");
     backgroundSound.play();
 
     pacman = createSprite(870, 180);
     pacman.addAnimation("walk", pacman_walk);
     pacman.setCollider("circle", 0, 0, 20, 20);
-    pacman.debug = true;
+//    pacman.debug = true;
 
 
     frame = loadImage("image/frame.png");
@@ -334,9 +334,9 @@ function setup() {
 
 
     ghosts = [
-        new ghost(550, 350, "image/ghost.png"),
-        new ghost(550, 350, "image/ghost.png"),
-        new ghost(550, 350, "image/ghost.png")
+        new ghost(550, 350, "image/ghost-blue.png"),
+        new ghost(550, 350, "image/ghost-pink.png"),
+        new ghost(550, 350, "image/ghost-red.png")
     ];
 }
 //end of setup
