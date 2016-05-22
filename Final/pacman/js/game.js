@@ -4,6 +4,7 @@ var obstacles;
 var backgroundSound;
 var dataLoaded = false;
 var dots = [];
+var dotCount = 0;
 var directions = [
     90, 180, 270, 360
  ];
@@ -355,6 +356,8 @@ function ghost(x, y, img) {
     /* this.s.debug = true;*/
 }
 
+dotCount = dots.length;
+
 
 function draw() {
     background("black");
@@ -378,26 +381,29 @@ function draw() {
         }
 
     } else {
-        textSize(90);
-        text("Game Over", 400, 300);
-        fill(0, 102, 153);
-//        ghost.setSpeed(0, 0);
-        pacman.setSpeed(0, 0);
+
+        if (dotCount > 0){
+            textSize(90);
+            text("Game Over", 400, 300);
+            fill(0, 102, 153);
+        }
+        else{
+            textSize(90);
+            text("You Won", 400, 300);
+            fill(0, 102, 153);
+            pacman.setSpeed(0, 0);
+            //ghost.setSpeed(0, 0);
+        }
     }
 
 
     dots.forEach(function (dot) {
         pacman.overlap(dot, function () {
             dot.remove();
+            dotCount--;
         });
     });
 
-//    if (dots==clearInterval){
-//        textSize(90);
-//        text("You won", 400, 300);
-//        fill(0, 102, 153);
-////        pacman.setSpeed(0, 0);
-//    }
 
     drawSprites();
 }
