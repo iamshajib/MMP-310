@@ -9,7 +9,7 @@ var directions = [
  ];
 
 function preload() {
-    pacman_walk_sprites = loadSpriteSheet("image/pacman.png", 30, 30, 6);
+    pacman_walk_sprites = loadSpriteSheet("image/pacman-new.png", 30, 30, 6);
     pacman_walk = loadAnimation(pacman_walk_sprites);
 
     backgroundSound = loadSound('sound/sound.mp3')
