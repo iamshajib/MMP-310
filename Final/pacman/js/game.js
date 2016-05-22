@@ -1,19 +1,18 @@
-var pacman, frame, line, line2, box, smbox, lose = false;
-var pacman_walk_sprites, pacman_walk, pacman_stand_sprites, pacman_stand;
+var pacman, frame, walls, ghosts, line, line2, box, smbox, lose = false;
+var pacman_walk_sprites, pacman_walk;
 var obstacles;
-var walls;
-var ghosts;
+var backgroundSound;
 var dataLoaded = false;
 var dots = [];
- var directions = [
+var directions = [
     90, 180, 270, 360
  ];
 
 function preload() {
-
-
     pacman_walk_sprites = loadSpriteSheet("image/pacman.png", 30, 30, 6);
     pacman_walk = loadAnimation(pacman_walk_sprites);
+
+    backgroundSound = loadSound('sound/sound.mp3')
 }
 
 function setup() {
@@ -28,6 +27,7 @@ function setup() {
 
 
     alert("Welcome to the Pacman Game.");
+    backgroundSound.play();
 
     pacman = createSprite(870, 180);
     pacman.addAnimation("walk", pacman_walk);
@@ -325,15 +325,15 @@ function setup() {
     smbox = createSprite(1012, 222);
     smbox.addImage(loadImage("image/smbox.png"));
     obstacles.add(smbox);
-//    smbox.debug = true;
+    //    smbox.debug = true;
 
     smbox = createSprite(1012, 460);
     smbox.addImage(loadImage("image/smbox.png"));
-//    smbox.debug = true;
+    //    smbox.debug = true;
     obstacles.add(smbox);
 
 
-    ghosts=[
+    ghosts = [
         new ghost(550, 350, "image/ghost.png"),
         new ghost(550, 350, "image/ghost.png"),
         new ghost(550, 350, "image/ghost.png")
@@ -373,7 +373,7 @@ function draw() {
             });
 
             ghosts[i].s.collide(pacman, function () {
-              lose = true;
+                lose = true;
             });
         }
 
@@ -389,6 +389,11 @@ function draw() {
             dot.remove();
         });
     });
+
+//    if (pacman.overlap(ghosts)) {
+//        ghosts.setSpeed(0, 0);
+//        pacman.setSpeed(0, 0);
+//    }
 
     drawSprites();
 }
@@ -414,7 +419,6 @@ function showImages() {
     }
     dataLoaded = true;
 }
-
 
 
 

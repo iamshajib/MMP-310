@@ -20,7 +20,7 @@ function getAnswers() {
         }
     }
 
-    var answers = ["c", "d", "b", "a", "b", "D", "B", "C", "B", "A"];
+    var answers = ["c", "d", "b", "a", "b", "d", "b", "c", "b", "a"];
 
     for (i = 1; i <= total; i++) {
         if (eval('q' + i) === answers[i - 1]) {
