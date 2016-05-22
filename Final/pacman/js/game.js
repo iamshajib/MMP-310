@@ -373,7 +373,7 @@ function draw() {
             });
 
             ghosts[i].s.collide(pacman, function () {
-                lose = true;
+//                lose = true;
             });
         }
 
@@ -381,6 +381,8 @@ function draw() {
         textSize(90);
         text("Game Over", 400, 300);
         fill(0, 102, 153);
+//        ghost.setSpeed(0, 0);
+        pacman.setSpeed(0, 0);
     }
 
 
@@ -390,9 +392,11 @@ function draw() {
         });
     });
 
-//    if (pacman.overlap(ghosts)) {
-//        ghosts.setSpeed(0, 0);
-//        pacman.setSpeed(0, 0);
+//    if (dots==clearInterval){
+//        textSize(90);
+//        text("You won", 400, 300);
+//        fill(0, 102, 153);
+////        pacman.setSpeed(0, 0);
 //    }
 
     drawSprites();
