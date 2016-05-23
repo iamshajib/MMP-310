@@ -1,5 +1,6 @@
 function getAnswers() {
     var total = 10;
+    var total = 5;
     var score = 0;
 
     var q1 = document.forms["question"]["q1"].value;
@@ -13,6 +14,7 @@ function getAnswers() {
     var q9 = document.forms["question"]["q9"].value;
     var q10 = document.forms["question"]["q10"].value;
 
+
     for (i = 1; i <= total; i++) {
         if (eval('q' + i) === null || eval('q' + i) === '') {
             alert('You missed question ' + i);
@@ -20,7 +22,10 @@ function getAnswers() {
         }
     }
 
+
     var answers = ["c", "d", "b", "a", "b", "d", "b", "c", "b", "a"];
+
+    var answers = ["c", "d", "b", "a", "b"];
 
     for (i = 1; i <= total; i++) {
         if (eval('q' + i) === answers[i - 1]) {
