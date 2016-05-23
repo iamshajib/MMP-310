@@ -340,11 +340,11 @@ function setup() {
     obstacles.add(smbox);
 
 
-//    ghosts = [
-//        new ghost(550, 350, "image/ghost-blue.png"),
-//        new ghost(550, 350, "image/ghost-pink.png"),
-//        new ghost(550, 350, "image/ghost-red.png")
-//    ];
+    ghosts = [
+        new ghost(550, 350, "image/ghost-blue.png"),
+        new ghost(550, 350, "image/ghost-pink.png"),
+        new ghost(550, 350, "image/ghost-red.png")
+    ];
 }
 //end of setup
 
@@ -437,7 +437,7 @@ function showImages() {
     for (var i = 0; i < data.dotLocations.length; i++) {
         var dot = createSprite(data.dotLocations[i][0], data.dotLocations[i][1]);
         dot.addImage(loadImage("image/" + data.dotImage));
-        dot.debug = true;
+//        dot.debug = true;
         /*obstacles.add(dot);*/
         dots.add(dot);
 
