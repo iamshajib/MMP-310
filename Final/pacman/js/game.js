@@ -376,7 +376,7 @@ function draw() {
             });
 
             ghosts[i].s.collide(pacman, function () {
-//                lose = true;
+                lose = true;
             });
         }
 
