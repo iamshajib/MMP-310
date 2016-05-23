@@ -1,9 +1,9 @@
-var pacman, frame, walls, ghosts, line, line2, box, smbox, lose = false;
+var pacman, frame, walls, ghosts = [], line, line2, box, smbox, lose = false;
 var pacman_walk_sprites, pacman_walk;
 var obstacles;
-var backgroundSound;
+var backgroundSound, lostSound;
 var dataLoaded = false;
-var dots = [];
+var dots;
 var dotCount = 0;
 var directions = [
     90, 180, 270, 360
@@ -13,11 +13,13 @@ function preload() {
     pacman_walk_sprites = loadSpriteSheet("image/pacman-new.png", 30, 30, 6);
     pacman_walk = loadAnimation(pacman_walk_sprites);
 
-    backgroundSound = loadSound('sound/sound.mp3')
+    backgroundSound = loadSound('sound/sound2.mp3')
 }
 
 function setup() {
     createCanvas(1200, 676);
+
+    dots= new Group();
 
     obstacles = new Group();
 
@@ -27,8 +29,12 @@ function setup() {
     console.log('setup complete');
 
 
-//    alert("Welcome to the Pacman Game.");
+//    alert("Welcome to the Pacman Game. Eat all the pacdots to win. Save the pacman from the ghost. Use keyboard arrow key to control the pacman.");
     backgroundSound.play();
+
+
+    soundFormats('mp3', 'ogg');
+    lostSound = loadSound('sound/gameover.mp3');
 
     pacman = createSprite(870, 180);
     pacman.addAnimation("walk", pacman_walk);
@@ -334,16 +340,16 @@ function setup() {
     obstacles.add(smbox);
 
 
-    ghosts = [
-        new ghost(550, 350, "image/ghost-blue.png"),
-        new ghost(550, 350, "image/ghost-pink.png"),
-        new ghost(550, 350, "image/ghost-red.png")
-    ];
+//    ghosts = [
+//        new ghost(550, 350, "image/ghost-blue.png"),
+//        new ghost(550, 350, "image/ghost-pink.png"),
+//        new ghost(550, 350, "image/ghost-red.png")
+//    ];
 }
 //end of setup
 
 function pacmanCollide() {
-    console.log('collide');
+    //console.log('collide');
 }
 
 
@@ -356,7 +362,7 @@ function ghost(x, y, img) {
     /* this.s.debug = true;*/
 }
 
-dotCount = dots.length;
+
 
 
 function draw() {
@@ -380,29 +386,37 @@ function draw() {
             });
         }
 
-    } else {
 
-        if (dotCount > 0){
+
+
+    } else {
+        console.log(dots.length);
+        if (dots.length > 0){
             textSize(90);
             text("Game Over", 400, 300);
             fill(0, 102, 153);
+            pacman.setSpeed(0, 0);
         }
         else{
             textSize(90);
             text("You Won", 400, 300);
             fill(0, 102, 153);
-            pacman.setSpeed(0, 0);
+
             //ghost.setSpeed(0, 0);
+//            lostSound.play();
         }
     }
 
 
     dots.forEach(function (dot) {
-        pacman.overlap(dot, function () {
+        pacman.collide(dot, function () {
             dot.remove();
-            dotCount--;
+
+            if (dots.length <= 0) lose = true;
+
         });
     });
+   // text("Dot count ".dotCount, 400, 0);
 
 
     drawSprites();
@@ -423,8 +437,9 @@ function showImages() {
     for (var i = 0; i < data.dotLocations.length; i++) {
         var dot = createSprite(data.dotLocations[i][0], data.dotLocations[i][1]);
         dot.addImage(loadImage("image/" + data.dotImage));
+        dot.debug = true;
         /*obstacles.add(dot);*/
-        dots.push(dot);
+        dots.add(dot);
 
     }
     dataLoaded = true;
